@@ -3,12 +3,12 @@ import os
 import sys
 
 
-with open("./downloads/names.dmp","r") as inputfile:
+with open("../MandatoryFile/names.dmp","r") as inputfile:
     lLinesNamesRemastered=inputfile.readlines()
 
 #create a dict with TaxID=[parent TaxID,Rank]
 dTaxIDtoParentandRank={}
-with open("./downloads/nodes.dmp","r") as inputfile:
+with open("../MandatoryFile/nodes.dmp","r") as inputfile:
     lLinesNodesRemastered=inputfile.readlines()
     for line in lLinesNodesRemastered:
         line=re.split("\t\|\t|\t|\n",line)

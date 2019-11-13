@@ -12,9 +12,9 @@ def RetrieveReaction(RXNlist,dPWYtoRXN):
             ListOfReact.append(value)
     return ListOfReact
 
-with open("./downloads/pathways.dat","r",encoding="iso-8859-14") as inputfile:
+with open("../MandatoryFile/pathways.dat","r",encoding="iso-8859-14") as inputfile:
     lLinePathway=inputfile.readlines()
-with open("./downloads/pathways16.5.dat","r",encoding="iso-8859-14") as inputfile:
+with open("../MandatoryFile/pathways16.5.dat","r",encoding="iso-8859-14") as inputfile:
     lOldLinePathway=inputfile.readlines()
 
 #Formating files
@@ -141,9 +141,9 @@ dRXNtoCPD=dTemp
 ############### ID to Name ##############
 
 ###############For compounds file #########
-with open ("./downloads/compounds.dat","r",encoding="iso-8859-14") as inputfile:
+with open ("../MandatoryFile/compounds.dat","r",encoding="iso-8859-14") as inputfile:
     lLineCompound=inputfile.readlines()
-with open ("./downloads/compounds16.5.dat","r",encoding="iso-8859-14")  as inputfile:
+with open ("../MandatoryFile/compounds16.5.dat","r",encoding="iso-8859-14")  as inputfile:
     lOldLineCompound=inputfile.readlines()
 
 lLineCompound="".join(lLineCompound)
@@ -195,9 +195,9 @@ for element in dOldCPDtoName:
         dCPDtoName[element]=dOldCPDtoName[element]
 
 ############# For Class Compounds ############
-with open ("./downloads/classes.dat","r",encoding="iso-8859-14") as inputfile:
+with open ("../MandatoryFile/classes.dat","r",encoding="iso-8859-14") as inputfile:
     lLineClasses=inputfile.readlines()
-with open ("./downloads/classes16.5.dat","r",encoding="iso-8859-14")  as inputfile:
+with open ("../MandatoryFile/classes16.5.dat","r",encoding="iso-8859-14")  as inputfile:
     lOldLineClasses=inputfile.readlines()
 
 lLineClasses="".join(lLineClasses)
@@ -249,9 +249,9 @@ for element in dOldCLtoName:
         dCLtoName[element]=dOldCLtoName[element]
 
 ####### Name of Reaction ##########
-with open ("./downloads/reactions.dat","r",encoding="iso-8859-14") as inputfile:
+with open ("../MandatoryFile/reactions.dat","r",encoding="iso-8859-14") as inputfile:
     lLineReaction=inputfile.readlines()
-with open ("./downloads/reactions16.5.dat","r",encoding="iso-8859-14")  as inputfile:
+with open ("../MandatoryFile/reactions16.5.dat","r",encoding="iso-8859-14")  as inputfile:
     lOldLineReaction=inputfile.readlines()
 
 lLineReaction="".join(lLineReaction)
@@ -330,9 +330,9 @@ for element in lPathway:
 
 ########### Enzyme.Reaction ################
 
-with open ("./downloads/enzrxns.dat","r",encoding="iso-8859-14") as inputfile:
+with open ("../MandatoryFile/enzrxns.dat","r",encoding="iso-8859-14") as inputfile:
     lLineENZ=inputfile.readlines()
-with open ("./downloads/enzrxns16.5.dat","r",encoding="iso-8859-14")  as inputfile:
+with open ("../MandatoryFile/enzrxns16.5.dat","r",encoding="iso-8859-14")  as inputfile:
     lOldLineENZ=inputfile.readlines()
 
 lLineENZ="".join(lLineENZ)

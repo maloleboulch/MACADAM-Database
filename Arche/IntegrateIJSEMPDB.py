@@ -3,7 +3,7 @@
 
 ###Load NCBI taxonomy####
 #Load all Names and TaxID in a Dict
-with open("./downloads/names.dmp","r") as inputfile:
+with open("../MandatoryFile/names.dmp","r") as inputfile:
     lLinesNames=inputfile.readlines()
     dNameToTaxID={}
     for line in lLinesNames:
@@ -11,7 +11,7 @@ with open("./downloads/names.dmp","r") as inputfile:
         dNameToTaxID[line[1]]=line[0]
 
 #Create a Dict with TaxID= Parent TaxID
-with open("./downloads/nodes.dmp","r") as inputfile:
+with open("../MandatoryFile/nodes.dmp","r") as inputfile:
     lLinesNodes=inputfile.readlines()
     dTaxIDToParentComplete={}
     lBacteriaTaxID=[]
@@ -48,7 +48,7 @@ def lineage(TaxID):
 
 
 
-with open("./downloads/IJSEM_pheno_db_v1.0.txt","r", encoding="ISO-8859-14") as inputfile:
+with open("../MandatoryFile/IJSEM_pheno_db_v1.0.txt","r", encoding="ISO-8859-14") as inputfile:
     lListofLines=inputfile.readlines()[1:]
     #For each taxonomy (Genus+species+strain) connect to: Genus, Species, Strain, Metabolic Pathway, Substrate, Habitat
     dTaxonomytoInfos={}
@@ -150,6 +150,6 @@ with open("./DatabaseTSV/IJSEMphenodb.tsv","w") as outputfile:
         else:
             k+=1
 
-print (k)
-print (len(dTaxonomytoInfos))
+# print (k)
+# print (len(dTaxonomytoInfos))
 #4873 Organisme 4623 à la fin

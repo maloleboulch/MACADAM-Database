@@ -24,8 +24,9 @@ def pathways_report_tar_to_linelist(tarArchives):
     namesTar=tarArchives.getnames()
     #search pathway-reports
     for item in namesTar:
-        if item.endswith("/pathways-report.txt"):
-            path=item
+        if item.endswith(".txt"):
+            if "/1.0/reports/pathways-report" in item:
+                path=item
     #extract and readlines fron pathway-reports
     pathways_report=tarArchives.extractfile(path)
     pathways_report=pathways_report.readlines()

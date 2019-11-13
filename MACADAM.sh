@@ -1,18 +1,51 @@
+#!/bin/sh
 ####### MACADAM script ######
 ####### see DLRefSeq.sh for more information #######
 
+#Load Python on SLURM
+module load system/Python-3.6.3 #Python3.6.3 have Biopython in it.
 
-bash ./Bacteria/DLRefSeq.sh
+#Launch a first time on Archaea
+
+cd Arche/
+
+MACADAMArch1=$(sbatch -c 1 --mem=16G --wait MACADAMArch1.sh)
+
+
+MACADAMArray=$(sarray -c 1 --mem-per-cpu=8G  -o ./Pt-Tools_%J_%A.out -e ./Pt-Tools_%J_%A.err --wait --%=20 sarray.sh)
+
+rm -r ./gbff/*
+
+MACADAMArch2=$(sbatch -c 1 --mem=16G --wait MACADAMArch2.sh)
+
+
+#Launch on Bacteria
+
+cd ..
+
+cd Bacteria/
+
+MACADAMBac1=$(sbatch -c 1 --mem=16G --wait MACADAMBac1.sh)
+
+
+MACADAMBacArray=$(sarray -c 1 --mem-per-cpu=8G  -o ./Pt-Tools_%J_%A.out -e ./Pt-Tools_%J_%A.err --wait sarray.sh)
+
+rm -r ./gbff/*
+
+MACADAMBac2=$(sbatch -c 1 --mem=16G --wait MACADAMBac2.sh)
+
+
+#Merged files
+
+cd ..
 
 rm -rf /work/mleboulch/PathT/ptools-local/pgdbs/user/
 
-bash ./Archaea/DLRefSeq.sh
-
-rm -rf /work/mleboulch/PathT/ptools-local/pgdbs/user/
-
-cp -rf ./Archaea/DatabaseTSV/* MergedFile/Archaea/
+cp -rf ./Arche/DatabaseTSV/* MergedFile/Arche/
 
 cp -rf Bacteria/DatabaseTSV/* MergedFile/Bact/
 
-python3 MergedFile/MergedArchaeaBact.py
-python3 MergedFile/ImportSQLite.py
+cd MergedFile
+
+python3 MergedArcheBact.py
+python3 ImportSQLite.py

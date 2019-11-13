@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-help_string = """
-A faire plus tard
-"""
-
 from optparse import OptionParser
 import os
-
-
 
 parser = OptionParser()
 #Directory of the GBFF files
@@ -51,10 +45,10 @@ for item in lgbfffiles:
         i+=1
         continue
 
-qarrayfile=open("qarray.sh","w")
+qarrayfile=open("sarray.sh","w")
 
 for file in os.listdir(gbff_global_directory):
     #change path (Needed on genotoul cluster for pathway tools) + +command for pathway
-    qarrayfile.write("export LD_LIBRARY_PATH=/tools/libraries/glibc/glibc-2.14/build/:$LD_LIBRARY_PATH;export LD_LIBRARY_PATH=/tools/libraries/jpeg/jpegv8/jpeg-8c/.libs/:$LD_LIBRARY_PATH;"+"time python3 buildPGDB.py " "-g ./gbff/"+file+"/ "+"-t ./gbff/"+file+"/tmp/ "+"\n")
+    qarrayfile.write("module load system/Python-3.6.3;time python3 buildPGDB.py " "-g ./gbff/"+file+"/ "+"-t ./gbff/"+file+"/tmp/ "+"\n")
 
 qarrayfile.close

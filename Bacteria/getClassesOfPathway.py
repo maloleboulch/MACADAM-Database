@@ -4,14 +4,15 @@
 # UNIQUE-ID - Pathways TYPES - Generalized-Reactions est la racine de l'arbre des classes
 #Attention certains Unique-ID ont plusieurs Type
 
-#Input File: classes.dat & pathway.dat from 20.5 et 16.5
+#Input File: classes.dat & pathway.dat from the current MetaCyc Database and MetaCyc 16.5 for MicroCyc
+#You can find these files on BioCyc website
 #Pathway Table must be all ready done!
 
-with open("./downloads/classes.dat","r",encoding="iso-8859-14") as inputfile:
+with open("../MandatoryFile/classes.dat","r",encoding="iso-8859-14") as inputfile:
     lLineClasses=inputfile.readlines()
 
 
-with open("./downloads/pathways.dat","r",encoding="iso-8859-14") as inputfile:
+with open("../MandatoryFile/pathways.dat","r",encoding="iso-8859-14") as inputfile:
     lLinePathway=inputfile.readlines()
 
 
@@ -138,11 +139,11 @@ setUnknown=setDatabasePathway-setPathway
 
 
 #Create Pathway for the other Metacyc 16.5
-with open("./downloads/classes16.5.dat","r",encoding="iso-8859-14") as inputfile:
+with open("../MandatoryFile/classes16.5.dat","r",encoding="iso-8859-14") as inputfile:
     lLineClasses=inputfile.readlines()
 
 
-with open("./downloads/pathways16.5.dat","r",encoding="iso-8859-14") as inputfile:
+with open("../MandatoryFile/pathways16.5.dat","r",encoding="iso-8859-14") as inputfile:
     lLinePathway=inputfile.readlines()
 
 lLineClasses="".join(lLineClasses)
@@ -224,6 +225,7 @@ for element in setUnknown:
     if element in dIDoldtoCommonName:
         dIDtoCommonName[element]=dIDoldtoCommonName[element]
 
+
 ###### Unique ID to common names ######
 
 #make a set of all ID used in PathwayHierarchy.tsv
@@ -249,6 +251,9 @@ for ch in lListofBadString:
         if ch in dIDtoCommonName[key]:
             dIDtoCommonName[key]=dIDtoCommonName[key].replace(ch,"")
 
+#### Exception for PRPP-Biosynthesis #####
+dIDtoCommonName["PRPP-Biosynthesis"]="PRPP Biosynthesis"
+
 with open("./DatabaseTSV/PathwayIDtoName.tsv","w") as outputfile:
     for item in lAllUniqueID:
         outputfile.write(item+"\t"+dIDtoCommonName[item]+"\n")
@@ -263,7 +268,7 @@ with open("./DatabaseTSV/PathwayHierarchy.tsv","w") as inputfile:
 
 #Some Pathways are not in our files. We add them manually
 with open("./DatabaseTSV/PathwayHierarchy.tsv","a") as outputfile:
-    with open("./downloads/UnknownPathways.tsv","r") as inputfile:
+    with open("../MandatoryFile/UnknownPathways.tsv","r") as inputfile:
         lLines=inputfile.readlines()
         for line in lLines:
             outputfile.write(line)

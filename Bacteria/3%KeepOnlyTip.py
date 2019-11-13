@@ -16,10 +16,10 @@ def onlybacteria(setOfTaxID,dTaxIDtoparent):
 with open("./downloads/MicrocycRemainingRemasteredAfter2.tsv","r") as inputfile:
     lLinesRemaining=inputfile.readlines()
 
-with open("./downloads/merged.dmp","r") as inputfile:
+with open("../MandatoryFile/merged.dmp","r") as inputfile:
     lLinesMergedTaxID=inputfile.readlines()
 
-with open("./downloads/nodes.dmp","r") as inputfile:
+with open("../MandatoryFile/nodes.dmp","r") as inputfile:
     lLinesNodes=inputfile.readlines()
 
 ################################### Nodes remastered

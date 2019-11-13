@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 help_string = """
-A faire plus tard
+Rename PGDBs to our standards.
 """
 import os
 import pandas as pd
@@ -98,7 +98,8 @@ for item in sharedTaxID:
 
 for key in dAssemblyOccurence:
     index=ShareGenomeDataframe.loc[ShareGenomeDataframe["# assembly_accession"] == key].index.tolist()
-    ShareGenomeDataframe.set_value(index[0],["OccurencetaxID"],dAssemblyOccurence[key])
+    ShareGenomeDataframe.at[index[0],"OccurencetaxID"]=dAssemblyOccurence[key]
+    #ShareGenomeDataframe.set_value(index[0],["OccurencetaxID"],dAssemblyOccurence[key])
 
 #Dictionnaries of correspondances between name of the PGDBs and assembly names
 dAssemblyNameofPGDS={}

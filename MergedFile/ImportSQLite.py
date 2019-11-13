@@ -17,7 +17,7 @@ def Connection_to_DB(db_file):
 
 
 #Create the DB and put the cursor
-dbTools=Connection_to_DB("./Results/PGM.db")
+dbTools=Connection_to_DB("../MACADAM/MACADAMdatabase.db")
 dbToolsCursor=dbTools.cursor()
 
 ############## DROP TABLES ###############
@@ -27,11 +27,13 @@ dbToolsCursor.execute('''DROP TABLE IF EXISTS hierarchy;''')
 dbToolsCursor.execute('''DROP TABLE IF EXISTS faprotax;''')
 dbToolsCursor.execute('''DROP TABLE IF EXISTS PWYRXN;''')
 dbToolsCursor.execute('''DROP TABLE IF EXISTS RXNName;''')
-dbToolsCursor.execute('''DROP TABLE IF EXISTS RXNCPD;''')
-dbToolsCursor.execute('''DROP TABLE IF EXISTS CPDName;''')
+dbToolsCursor.execute('''DROP TABLE IF EXISTS RXNMTB;''')
+dbToolsCursor.execute('''DROP TABLE IF EXISTS MTBName;''')
 dbToolsCursor.execute('''DROP TABLE IF EXISTS RXNENZ;''')
 dbToolsCursor.execute('''DROP TABLE IF EXISTS EnzName;''')
 dbToolsCursor.execute('''DROP TABLE IF EXISTS IJSEMPhenoDB;''')
+dbToolsCursor.execute('''DROP TABLE IF EXISTS RXNECNumber;''')
+
 
 ############## DROP TABLES ###############
 
@@ -77,13 +79,13 @@ dbToolsCursor.execute('''CREATE TABLE IF NOT EXISTS RXNName(
             Name TEXT
             );''')
 
-dbToolsCursor.execute('''CREATE TABLE IF NOT EXISTS RXNCPD(
+dbToolsCursor.execute('''CREATE TABLE IF NOT EXISTS RXNMTB(
             RXN TEXT,
-            CPD TEXT
+            MTB TEXT
             );''')
 
-dbToolsCursor.execute('''CREATE TABLE IF NOT EXISTS CPDName(
-            CPD TEXT,
+dbToolsCursor.execute('''CREATE TABLE IF NOT EXISTS MTBName(
+            MTB TEXT,
             Name TEXT
             );''')
 
@@ -95,6 +97,11 @@ dbToolsCursor.execute('''CREATE TABLE IF NOT EXISTS RXNENZ(
 dbToolsCursor.execute('''CREATE TABLE IF NOT EXISTS ENZName(
             ENZ TEXT,
             Name TEXT
+            );''')
+
+dbToolsCursor.execute('''CREATE TABLE IF NOT EXISTS RXNECNumber(
+            RXN TEXT,
+            ECNumber TEXT
             );''')
 
 dbToolsCursor.execute('''CREATE TABLE IF NOT EXISTS IJSEMPhenoDB(
@@ -142,12 +149,12 @@ with open("./Results/RXN.Name.tsv","r") as inputfile:
 with open("./Results/RXN.CPD.tsv","r") as inputfile:
     csvPathway=csv.reader(inputfile,delimiter='\t')
     for t in csvPathway:
-        dbToolsCursor.execute('INSERT INTO  RXNCPD VALUES (?,?)', t)
+        dbToolsCursor.execute('INSERT INTO  RXNMTB VALUES (?,?)', t)
 
 with open("./Results/CPD.Name.tsv","r") as inputfile:
     csvPathway=csv.reader(inputfile,delimiter='\t')
     for t in csvPathway:
-        dbToolsCursor.execute('INSERT INTO  CPDName VALUES (?,?)', t)
+        dbToolsCursor.execute('INSERT INTO  MTBName VALUES (?,?)', t)
 
 with open("./Results/RXN.ENZ.tsv","r") as inputfile:
     csvPathway=csv.reader(inputfile,delimiter='\t')
@@ -159,6 +166,11 @@ with open("./Results/ENZName.tsv","r") as inputfile:
     for t in csvPathway:
         dbToolsCursor.execute('INSERT INTO  ENZName VALUES (?,?)', t)
 
+with open("./Results/RXNECNumber.tsv","r") as inputfile:
+    csvPathway=csv.reader(inputfile,delimiter='\t')
+    for t in csvPathway:
+        dbToolsCursor.execute('INSERT INTO  RXNECNumber VALUES (?,?)', t)
+
 with open("./Results/IJSEMphenodb.tsv","r") as inputfile:
     csvPathway=csv.reader(inputfile,delimiter='\t')
     for t in csvPathway:
@@ -169,12 +181,13 @@ dbToolsCursor.execute('''CREATE INDEX index_name ON taxonomy(name);''')
 dbToolsCursor.execute('''CREATE INDEX index_taxID ON taxonomy(taxID);''') #Usefull? Not in use i think
 dbToolsCursor.execute('''CREATE INDEX index_faprotax ON faprotax(taxonomy);''')
 dbToolsCursor.execute('''CREATE INDEX index_ENZname ON ENZName(Name);''')
-dbToolsCursor.execute('''CREATE INDEX index_CPD ON RXNCPD(CPD);''')
+dbToolsCursor.execute('''CREATE INDEX index_MTB ON RXNMTB(MTB);''')
 dbToolsCursor.execute('''CREATE INDEX index_ENZ ON RXNENZ(ENZ);''')
 dbToolsCursor.execute('''CREATE INDEX index_PWY ON PWYRXN(RXN);''')
 dbToolsCursor.execute('''CREATE INDEX index_FrameID ON pathway(pathwayFrameID);''')
-dbToolsCursor.execute('''CREATE INDEX index_CPDname ON CPDName(Name);''')
+dbToolsCursor.execute('''CREATE INDEX index_MTBname ON MTBName(Name);''')
 dbToolsCursor.execute('''CREATE INDEX index_RXNname ON RXNName(Name);''')
+dbToolsCursor.execute('''CREATE INDEX index_RXNECNumber ON RXNECNumber(ECNumber);''')
 dbToolsCursor.execute('''CREATE INDEX index_IJSEMPhenoDB ON IJSEMPhenoDB(taxonomy);''')
 
 dbTools.commit()

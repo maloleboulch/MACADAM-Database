@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-help_string = """
-A faire plus tard
-"""
-
 import os
 import sys
 
 #Attention! nodes.dmp et names.dmp doit être dans le dossier downloads. Ils viennent du NCBI taxonomy
 #open nodes.dmp
-fNodes=open("downloads/nodes.dmp","r")
+fNodes=open("../MandatoryFile/nodes.dmp","r")
 lineNodes=fNodes.readlines()
-fNames=open("downloads/names.dmp","r")
+fNames=open("../MandatoryFile/names.dmp","r")
 lineNames=fNames.readlines()
-fShareIndex=open("downloads/ShareIndex2.tsv","r")
+fShareIndex=open("downloads/ShareIndex.tsv","r")
 lineShareIndex=fShareIndex.readlines()
 fNamesRemastered=open("downloads/namesremastered.dmp","w")
 fNodesRemastered=open("downloads/nodesremastered.dmp","w")
@@ -39,7 +35,6 @@ def lineage(TaxID):
     sUniqueTaxID=set()
     lineage=[]
     lineage.insert(0,TaxID)
-    print (TaxID)
     while TaxID!="1":
         sUniqueTaxID.add(TaxID)
         value=dNodes[TaxID]

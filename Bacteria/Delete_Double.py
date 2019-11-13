@@ -122,5 +122,3 @@ with open("downloads/complete_genome_data.tsv","w") as fcomplete_genome_data:
         #uncomment this line for delete all duplicates!
         elif key !="# assembly_accession" :
             os.remove("PGDBs/g"+key[4:-2]+"cyc.tar.gz")
-
-#Sur le cluster déplacer les PGDBs

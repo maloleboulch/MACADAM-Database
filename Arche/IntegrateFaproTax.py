@@ -8,12 +8,12 @@
 #3843 TaxID différent (82%)
 
 
-with open("./downloads/FAPROTAX.txt","r") as inputfile:
+with open("../MandatoryFile/FAPROTAX.txt","r") as inputfile:
     lFaprotaxLine=inputfile.readlines()
 
 
 #Load all Names and TaxID in a Dict
-with open("./downloads/names.dmp","r") as inputfile:
+with open("../MandatoryFile/names.dmp","r") as inputfile:
     lLinesNames=inputfile.readlines()
     dNameToTaxID={}
     for line in lLinesNames:
@@ -21,7 +21,7 @@ with open("./downloads/names.dmp","r") as inputfile:
         dNameToTaxID[line[1]]=line[0]
 
 #Create a Dict with TaxID= Parent TaxID
-with open("./downloads/nodes.dmp","r") as inputfile:
+with open("../MandatoryFile/nodes.dmp","r") as inputfile:
     lLinesNodes=inputfile.readlines()
     dTaxIDToParentComplete={}
     lBacteriaTaxID=[]
