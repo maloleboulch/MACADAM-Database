@@ -50,4 +50,4 @@ echo $ftpurl | xargs -n 1 -P 16 wget -P gbff
 #Uncompress gz file
 find ./gbff/* -name '*.gz*' -print0 | xargs -0 -I {} -P 8 gunzip {}
 
-python3 Parallelize.py -n 30
+python3 Parallelize.py -n 40

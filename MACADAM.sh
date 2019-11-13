@@ -28,7 +28,7 @@ cd Bacteria/
 MACADAMBac1=$(sbatch -c 1 --mem=16G --wait MACADAMBac1.sh)
 
 
-MACADAMBacArray=$(sarray -c 1 --mem-per-cpu=8G  -o ./Pt-Tools_%J_%A.out -e ./Pt-Tools_%J_%A.err --wait sarray.sh)
+MACADAMBacArray=$(sarray -c 1 --mem-per-cpu=8G  -o ./Pt-Tools_%J_%A.out -e ./Pt-Tools_%J_%A.err --wait --%=50 sarray.sh)
 
 rm -r ./gbff/*
 
