@@ -34,7 +34,8 @@ If MicroCyc doesn't work anymore you can comment all the MicroCyc scripts in the
 
 #Errors
 If pathway tools cannot create some PGDBs, the script RenamePGDBs.py or ExtractPathwayReport.py will crash and show the PGDBs names.
-getClassesOfPathway.py will crashed if some pathways are unknown in MetaCyc 23.1 or 16.5. Yout must find the hierarchy on internet and add it to the UnknownPathway.tsv file
+getClassesOfPathway.py will crashed if some pathways are unknown in MetaCyc 23.1 or 16.5. Yout must find the hierarchy on internet and add it to the UnknownPathway.tsv file.
+ShareIndexAfterLineage.tsv is the main intermediary files. You can follow changes at each steps of MACADAM inside it
 
 
 
