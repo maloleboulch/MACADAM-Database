@@ -6,7 +6,7 @@ for file in os.listdir("./Bact/"):
 
 for element in lListofFile:
     bact="./Bact/"+element
-    arch="./Arche/"+element
+    arch="./Archaea/"+element
     result="./temp/"+element
     lList=[bact,arch]
     with open(result,"w") as outfile:
