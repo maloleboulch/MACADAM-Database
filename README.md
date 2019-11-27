@@ -14,10 +14,11 @@ Master scripts: MACADAM.sh
 MASTER scripts in bacteria and archaea: MACADAMBac1.sh, MACADAMBac2.sh, MACADAMArch1.sh, MACADAMArch2.sh
 MACADAM-test.sh: Launch only on Archaea for testing.
 
-Some scripts have absolute path to change be fore launching:
-  - MACADAMBac2.sh
-  - MACADAMArch2.sh
-  - MACADAM.sh
+Some scripts have absolute path to change before launching:
+  - MACADAMBac2.sh => multiple path to your /ptools-local/pgdbs/user
+  - MACADAMArch2.sh => multiple path to your /ptools-local/pgdbs/user
+  - MACADAM.sh => path to your:  ptools-local/pgdbs/user/
+
 
 To create MACADAM launch the MACADAM.sh script.
 
