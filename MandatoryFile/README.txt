@@ -4,7 +4,8 @@ Mettre ici les fichiers:
 	
 	MetaCyc:
 	classes.dat, pathways.dat, enzrxns.dat, reactions.dat, compounds.dat from the current MetaCyc release and from the 16.5 release.
-	These files are located inside the archive of MetaCyC (for MetaCyc 23.1 : /23.1/data)
+	For the current release files of METACYC, they are located inside the archive of MetaCyC (for MetaCyc 23.1 : /23.1/data).
+	For the 16.5 files, you must find them yourself.
 	
 	FAPROTAX:
 	FAPROTAX.txt
