@@ -7,7 +7,7 @@ module load system/Python-3.6.3 #Python3.6.3 have Biopython in it.
 
 #Launch a first time on Archaea
 
-cd Arche/
+cd Archaea/
 
 MACADAMArch1=$(sbatch -c 1 --mem=16G --wait MACADAMArch1.sh)
 
