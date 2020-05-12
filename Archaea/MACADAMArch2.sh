@@ -36,7 +36,7 @@ python3 1%IntegrateUniqueTaxID.py
 python3 2%deletesupword.py
 python3 3%KeepOnlyTip.py
 
-rm -r ./MicroCyc/
+rm -r ./Microcyc/
 mkdir ./Microcyc/
 
 python3 DLMicrocycandExtractOnlyDownloads.py
