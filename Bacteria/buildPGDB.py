@@ -131,4 +131,4 @@ for file in filesgbff:
         #launch pathway-tools on the file
         print ("start prediction for "+(''.join(lTaxid[0])).replace("taxon:",""))
         print (dirtmp)
-        subprocess.call(["pathway-tools23", "-lisp", "-no-cel-overview", "-no-web-cel-overview", "-nologfile", "-no-patch-download", "-disable-metadata-saving", "-patho", dirtmp])
+        subprocess.call(["pathway-tools", "-lisp", "-no-cel-overview", "-no-web-cel-overview", "-nologfile", "-no-patch-download", "-disable-metadata-saving", "-patho", dirtmp])
