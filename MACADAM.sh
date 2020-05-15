@@ -45,6 +45,12 @@ mkdir ./MergedFile/Archaea/
 rm -r ./MergedFile/Bact/
 mkdir ./MergedFile/Bact/
 
+rm -r ./MergedFile/temp/
+mkdir ./MergedFile/temp/
+
+rm -r ./MergedFile/Results/
+mkdir ./MergedFile/Results/
+
 cp -rf ./Archaea/DatabaseTSV/* MergedFile/Archaea/
 
 cp -rf ./Bacteria/DatabaseTSV/* MergedFile/Bact/
