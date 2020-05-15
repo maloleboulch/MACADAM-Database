@@ -39,8 +39,6 @@ MACADAMBac2=$(sbatch -c 1 --mem=16G --wait MACADAMBac2.sh)
 
 cd ..
 
-rm -rf /work/mleboulch/PathT/ptools-local/pgdbs/user/
-
 cp -rf ./Archaea/DatabaseTSV/* MergedFile/Archaea/
 
 cp -rf Bacteria/DatabaseTSV/* MergedFile/Bact/
