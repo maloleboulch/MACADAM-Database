@@ -39,9 +39,15 @@ MACADAMBac2=$(sbatch -c 1 --mem=16G --wait MACADAMBac2.sh)
 
 cd ..
 
+rm -r ./MergedFile/Archaea/
+mkdir ./MergedFile/Archaea/
+
+rm -r ./MergedFile/Bact/
+mkdir ./MergedFile/Bact/
+
 cp -rf ./Archaea/DatabaseTSV/* MergedFile/Archaea/
 
-cp -rf Bacteria/DatabaseTSV/* MergedFile/Bact/
+cp -rf ./Bacteria/DatabaseTSV/* MergedFile/Bact/
 
 cd MergedFile
 
