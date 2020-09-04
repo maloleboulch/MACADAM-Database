@@ -14,6 +14,7 @@ import csv
 PGDBsdirectory="./PGDBs/Uniq/"
 
 listofPGDBsTar=os.listdir(PGDBsdirectory)
+MissingPGDBs=[]
 
 
 def pathways_report_tar_to_linelist(tarArchives):
@@ -56,3 +57,12 @@ for file in listofPGDBsTar:
                 output.write(line)
         except:
             print ("Missing Pathway report: "+file)
+            MissingPGDBs.append(file[:-7])
+
+with open("./downloads/ShareIndex.tsv","r") as inputfile:
+    lines=inputfile.readlines()
+
+with open("./downloads/ShareIndex.tsv","w") as outputfile:
+    for line in lines:
+        if line.split("\t")[0] not in MissingPGDBs:
+            outputfile.write(line)

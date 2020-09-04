@@ -17,6 +17,9 @@ fNamesRemastered=open("downloads/namesremastered.dmp","w")
 fNodesRemastered=open("downloads/nodesremastered.dmp","w")
 fShareIndexAfterLineage=open("downloads/ShareIndexAfterLineage.tsv","w")
 
+fMerged=open("../MandatoryFile/merged.dmp","r")
+lineMerged=fMerged.readlines()
+
 #create a dictionary to store [taxID]=[parent,rank]
 dNodes={}
 
@@ -24,6 +27,11 @@ for line in list(lineNodes):
     line=line.split("\t|\t")
     dNodes[line[0]]=[line[1],line[2]]
 
+#create a dict for merged tax OldTaxID=NewTaxID
+dMerged={}
+for line in list(lineMerged):
+    line=line.split("\t|\t")
+    dMerged[line[0]]=line[1].replace("\t|\n", "")
 
 
 #search lineage for a taxID
@@ -59,6 +67,11 @@ sTaxID=set(lTaxID)
 dLineageTaxID={}
 sAllTaxID=set()
 for item in sTaxID:
+    if item in dMerged:
+        print ("Merged TaxID")
+        print (item)
+        print (dMerged[item])
+        item=dMerged[item]
     temp=lineage(item)
     dLineageTaxID[item]=temp[0]
     sAllTaxID=sAllTaxID.union(temp[1])
